@@ -8,7 +8,7 @@ export type PipelineConfig = {
   branch: string;
 };
 
-const config: PipelineConfig = { environment: "alpha"; branch: "development" };
+const config: PipelineConfig = { environment: "alpha", branch: "development" };
 
 const app = new cdk.App();
 
