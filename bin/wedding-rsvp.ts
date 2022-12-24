@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
-import { WeddingRsvpStack } from "../lib/wedding-rsvp-stack";
+import { PipelineStack } from "../lib/pipeline-stack";
 
 export type PipelineConfig = {
   environment: "prod" | "alpha" | "devel";
@@ -12,7 +12,7 @@ const config: PipelineConfig = { environment: "alpha", branch: "development" };
 
 const app = new cdk.App();
 
-new WeddingRsvpStack(app, "WeddingRsvpStack", {
+new PipelineStack(app, "WeddingRsvpStack", {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
