@@ -22,7 +22,7 @@ export class WeddingRsvpStack extends cdk.Stack {
             { trigger: cdk.aws_codepipeline_actions.GitHubTrigger.WEBHOOK }
           ),
           installCommands: ["npm ci"],
-          commands: ["npm synth"],
+          commands: ["npm run synth"],
           env: {
             CDK_ENV: props.config.environment,
           },
