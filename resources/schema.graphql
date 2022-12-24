@@ -1,0 +1,50 @@
+enum DietaryRestriction {
+  VEGETARIAN
+  VEGAN
+  LACTOSE_INTOLERANT
+  PEANUT_ALLERGY
+}
+
+type Rsvp {
+  id: ID!
+  attending: Boolean
+  firstName: String!
+  lastName: String!
+  zipCode: String!
+  groupCode: String!
+  dietaryRestrictions: [DietaryRestriction!]
+  dietaryRestrictionNote: String
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  endCursor: String!
+}
+
+type RsvpConnection {
+  pageInfo: PageInfo!
+  nodes: [Rsvp!]!
+}
+
+input UpdateRsvpInput {
+  id: ID!
+  attending: Boolean!
+  firstName: String!
+  lastName: String!
+  dietaryRestrictions: [DietaryRestriction!]
+  dietaryRestrictionNote: String
+}
+
+type UpdateResult {
+  success: Boolean
+}
+
+type Query {
+  allRsvp: RsvpConnection
+  allRsvpsByLastNameAndZip(lastName: String!, zipCode: String!): RsvpConnection
+}
+
+type Mutation {
+  updateRsvps(rsvps: [UpdateRsvpInput!]!): UpdateResult
+}
